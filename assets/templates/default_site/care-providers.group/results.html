@@ -1,0 +1,62 @@
+{embed="includes/head" my_page_title="Search Results"}
+
+<body>
+
+{embed="includes/header"}
+
+<div id="care-providers" class="container-fluid">
+  <div class="row">
+    <div id="cs-container" class="col-lg-8 col-lg-offset-2">
+  		
+  		<h1 class="spaceaftermd">Search Results</h1>
+  		
+  		{exp:low_search:form result_page="care-providers/results"}
+  		  <div class="input-group spaceaftermd">
+  		    <input type="search" name="keywords" id="keywords" class="form-control" placeholder='{exp:low_search:keywords query="{segment_3}"}'>
+  		    <span class="input-group-btn">
+  		      <button class="btn btn-default" type="submit">SEARCH</button>
+  		    </span>
+  		  </div><!-- /input-group -->
+  		{/exp:low_search:form}
+  		
+  		{exp:low_search:results query="{segment_3}"}
+				<div class="venue-item spaceaftermd">
+					<h4 class="spaceafterxs"><a href="/care-providers/view/{url_title}">{title}</a></h4>
+					
+					<div class="row spaceafterxs">
+						<div class="col-md-3">
+							<p>{address}<br />{phone}</p>
+						</div>
+						<div class="col-md-4 col-md-offset-1">
+							
+						</div>
+						<div class="col-md-3 col-md-offset-1">
+							<ul class="social-links">
+								{if yelp_link}<li><a href="http://www.yelp.com/biz/{yelp_link}" target="_blank">Reviews <i class="fa fa-yelp"></i></a></li>{/if}
+								{if address}<li><a href="https://maps.google.com?daddr={address}" target="_blank">Directions <i class="fa fa-map-marker"></i></a></li>{/if}
+							</ul><!--END .social-links-->
+						</div>
+					</div><!--END .row-->
+					
+					<div class="spaceafterxs">
+						{exp:trunchtml chars="300" inline="&nbsp;...&nbsp;<a href='/care-providers/view/{url_title}'>tell me more</a>"}{description}{/exp:trunchtml}
+					</div>
+					
+					<ul class="tags">
+						<li><strong>Tags:</strong></li>
+						{categories show_group="3"}
+							{if category_name}
+							<li><a href="/care-providers/tags/{category_url_title}/{category_id}">{category_name}</a></li>
+						{/categories}
+					</ul><!--END .tags-->
+					
+				</div><!--END .venue-item-->
+  		    
+  		  {if no_results}<p>No search results</p>{/if}
+  		{/exp:low_search:results}
+  		  			
+    </div><!--END #cs-container-->
+  </div><!--END .row-->
+</div><!--END #care-providers-->
+
+{embed="includes/footer"}

@@ -1,0 +1,114 @@
+{exp:channel:entries channel="providers" status="open" limit="1"}
+
+{embed="includes/head" my_page_title="{title}"}
+
+<style>
+#recentreviews {
+	display: none;
+}
+img.yelpreviewimg {
+	max-width: 30px;
+	max-height: 30px;
+	border-radius: 15px;
+}
+</style>
+
+<body>
+
+{embed="includes/header"}
+
+<div id="venue" class="container-fluid">
+  <div class="row">
+    <div id="cs-container" class="col-md-8 col-md-offset-2">
+  		
+  		
+  		<div class="jumbotron">
+  		  <div class="container">
+  				<img src="http://placehold.it/100x100" align="left" style="margin-right: 10px;border-radius: 50px;" />
+  				<h3 class="spaceaftermd">{title}</h3>
+  				<p>{categories show_group="3" backspace="2"}{if category_name}<a href="/care-providers/tags/{category_url_title}/{category_id}">{category_name}</a>, {/categories}</p>
+  				<div class="clear"></div>
+  		  </div>
+  		</div>
+  		
+  		<div class="row">
+  			
+  			<div class="col-md-8">
+  				<div class="panel panel-default">
+  				  <div class="panel-heading">
+  				    <h3 class="panel-title">Bio</h3>
+  				  </div>
+  				  <div class="panel-body">
+  						{description}
+  				  </div>
+  				</div>
+  				
+  				<div class="panel panel-default">
+  				  <div class="panel-heading">
+  				    <h3 class="panel-title">Interests</h3>
+  				  </div>
+  				  <div class="panel-body">
+  						{description}
+  				  </div>
+  				</div>
+  				
+  			</div><!--END #-->
+  			
+  			<div id="sidebar" class="col-md-4">
+  				
+  				<div class="panel panel-default">
+  				  <div class="panel-heading">
+  				    <h3 class="panel-title">Get in touch</h3>
+  				  </div>
+  				  <div class="panel-body">
+  				    <div class="sidebar-section">
+  				    	<h4>Phone</h4>
+  				    	<p>{phone}</p>
+  				    </div><!--END .sidebar-section-->
+  				    
+  				    <div class="sidebar-section">
+  				    	<h4>Website</h4>
+  				    	<p>{website}</p>
+  				    </div><!--END .sidebar-section-->
+  				    
+  				    <div class="sidebar-section">
+  				    	<h4>Address</h4>
+  				    	<p>{address}</p>
+  				    </div><!--END .sidebar-section-->
+  				    
+  				    <div class="sidebar-section">
+  				    	<h4>Directions</h4>
+  				    	<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'>{google_maps}</div>
+  				    </div><!--END .sidebar-section-->
+  				    
+  				  </div>
+  				</div>
+  				
+  				<div class="panel panel-default">
+  				  <div class="panel-heading">
+  				    <h3 class="panel-title">Recent Reviews</h3>
+  				  </div>
+  				  <div class="panel-body">
+  						<div class="sidebar-section">
+  							<script>
+  							(function() { 
+  								var s = document.createElement("script");
+  								var yelp = '{yelp_link}';
+  								var yelpContainer = '100%';
+  								s.async = true;
+  								s.onload = s.onreadystatechange = function(){getYelpWidget(yelp, yelpContainer,"BLK","n","y","3");};s.src='http://chrisawren.com/widgets/yelp/yelpv2.js' ;var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);})();
+  							</script>
+  							<div id='yelpwidget'></div>
+  						</div><!--END .sidebar-section-->
+  				  </div>
+  				</div>
+  				
+  			</div><!--END #sidebar-->
+  			
+  		</div><!--END .row-->
+ 			  			
+    </div><!--END #cs-container-->
+  </div><!--END .row-->
+</div><!--END #lunch-->
+{/exp:channel:entries}
+{embed="includes/footer"}
